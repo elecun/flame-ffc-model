@@ -1,5 +1,5 @@
 ﻿시간날짜,황산동함유량,황산함유량,염소함유량,황산동분석값,황산분석값,황산분석값,광택제첨가량,확산제첨가량,평활제첨가량,전압,전류,속도,장력,온도,두께최소,두께최대,정지상태초기가동,가동종료
-datetime,copper_sulfate_content,sulfuric_acid_content,chloride_content,copper_sulfate_analysis,sulfuric_acid_analysis,chloride_analysis,add_amont_brightener,add_amount_carrier,add_amount_leveller,v,a,velocity,tension,temperature,thick_min,thickness_max,warmup,off
+datetime,copper_sulfate_content,sulfuric_acid_content,chloride_content,copper_sulfate_analysis,sulfuric_acid_analysis,chloride_analysis,add_amount_brightener,add_amount_carrier,add_amount_leveller,v,a,velocity,tension,temperature,thick_min,thickness_max,warmup,off
 2023-07-11T08:55:00Z,,,,,,,,,,1.7,14,,,,,,1,
 2023-07-11T09:20:00Z,,,,,,,,,,2.2,48,0.05,5.4,26.6,,,,
 2023-07-11T09:40:00Z,,,,,,,,,,2.2,48,0.05,6.4,25.7,,,,
