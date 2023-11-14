@@ -5,3 +5,5 @@ scipy
 scikit-learn
 gpy
 openpyxl
+pydot
+graphviz
