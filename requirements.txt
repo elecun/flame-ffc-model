@@ -7,3 +7,4 @@ gpy
 openpyxl
 pydot
 graphviz
+tensorflow==2.12
