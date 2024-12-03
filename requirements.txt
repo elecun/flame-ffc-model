@@ -8,3 +8,4 @@ openpyxl
 pydot
 graphviz
 tensorflow
+seaborn
