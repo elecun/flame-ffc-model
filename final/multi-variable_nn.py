@@ -171,7 +171,7 @@ velocity_kde = gaussian_kde(velocity_normalized, bw_method=bw)
 tension_kde = gaussian_kde(tension_normalized, bw_method=bw)
 
 # resample from kde
-n_sample = 2000
+n_sample = 3000
 
 x_optime = np.linspace(min(optime_mean_normalized), max(optime_mean_normalized), n_sample)
 x_brightener = np.linspace(min(add_amount_brightener_normalized), max(add_amount_brightener_normalized), n_sample)
@@ -234,8 +234,6 @@ X = pd.DataFrame([x_optime.T, x_voltage.T, x_ampere.T, x_temperature.T, x_cs.T, 
 y = pd.DataFrame([x_brightener.T, x_carrier.T]).T
 X.columns = ['optime', 'voltage', 'Ampere', "Temperature", "copper_sulfate", "sulfuric_acid", "Tension", "Velocity"]
 y.columns = ['brightener', 'carrier']
-
-# print(X)
 
 # model
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42, shuffle=True)
