@@ -13,6 +13,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import r2_score
 import seaborn as sns
 from sklearn.metrics import explained_variance_score, mean_absolute_error, mean_squared_error
+import joblib
 
 # 1. Load Raw Data
 csv_raw = pd.read_csv("./data_2024.csv", skiprows=1, parse_dates=['datetime'], dayfirst=False)
@@ -230,10 +231,16 @@ from tensorflow.keras.optimizers import RMSprop
 
 
 # correlation
-X = pd.DataFrame([x_optime.T, x_voltage.T, x_ampere.T, x_temperature.T, x_cs.T, x_sa.T, x_tension.T, x_velocity.T]).T
+# X = pd.DataFrame([x_optime.T, x_voltage.T, x_ampere.T, x_temperature.T, x_cs.T, x_sa.T, x_tension.T, x_velocity.T]).T
+# y = pd.DataFrame([x_brightener.T, x_carrier.T]).T
+# X.columns = ['optime', 'voltage', 'Ampere', "Temperature", "copper_sulfate", "sulfuric_acid", "Tension", "Velocity"]
+# y.columns = ['brightener', 'carrier']
+
+X = pd.DataFrame([x_optime.T, x_voltage.T, x_ampere.T, x_temperature.T, x_cs.T, x_sa.T, x_velocity.T]).T
 y = pd.DataFrame([x_brightener.T, x_carrier.T]).T
-X.columns = ['optime', 'voltage', 'Ampere', "Temperature", "copper_sulfate", "sulfuric_acid", "Tension", "Velocity"]
+X.columns = ['optime', 'voltage', 'Ampere', "Temperature", "copper_sulfate", "sulfuric_acid", "Velocity"]
 y.columns = ['brightener', 'carrier']
+
 
 # model
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42, shuffle=True)
@@ -250,6 +257,16 @@ history = model.fit(X_train, y_train, epochs=20, batch_size=5, verbose=1, valida
 y_pred = model.predict(X_test)
 
 # save model
+scaler_path = 'optime.joblib'
+joblib.dump(optime_scaler, 'optime.joblib')
+joblib.dump(brightener_scaler, 'brightener.joblib')
+joblib.dump(carrier_scaler, 'carrier.joblib')
+joblib.dump(voltage_scaler, 'voltage.joblib')
+joblib.dump(ampere_scaler, 'ampere.joblib')
+joblib.dump(temperature_scaler, 'temperature.joblib')
+joblib.dump(cs_scaler, 'cs.joblib')
+joblib.dump(sa_scaler, 'sa.joblib')
+joblib.dump(velocity_scaler, 'velocity.joblib')
 model.save("./mvnn.keras")
 model.summary()
 
